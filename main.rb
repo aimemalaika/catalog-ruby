@@ -1,17 +1,30 @@
 require_relative 'app'
 
-def main
-  app. App.new
+def display_list
   puts "****************************\n*       MY CATALOGUE       *\n****************************\n\n\n"
   puts "Select an option:\n--------------------\n"
-  puts "1. List all books \n2. List all music albums \n3. List all movies"
-  puts "4. List of games \n5. List all genres (e.g 'Comedy', 'Thriller') \n6. List all labels (e.g. 'Gift', 'New')"
-  puts "7. List all authors (e.g. 'Stephen King') \n8. List all sources (e.g. 'From a friend', 'Online shop') \n9. Add a book"
-  puts "10. Add a music album \n11. Add a movie \n12. Add a game"
-  puts "13. Exit"
+  puts "
+    1. List all books 
+    2. List all music albums 
+    3. List all movies
+    4. List of games 
+    5. List all genres (e.g 'Comedy', 'Thriller') 
+    6. List all labels (e.g. 'Gift', 'New')
+    7. List all authors (e.g. 'Stephen King')
+    8. List all sources (e.g. 'From a friend', 'Online shop') 
+    9. Add a book
+    10. Add a music album
+    11. Add a movie 
+    12. Add a game
+    13. Exit"
+end
 
-  option = gets.chomp
+def main
+  app = App.new
+  option = ""
   while option != '3'
+    display_list
+    option = gets.chomp
     case option
     when '1'
       puts "Add item to catalogue\n--------------------\n"
@@ -22,7 +35,6 @@ def main
     end
     puts 'Select an option:'
     puts "1. Add item to catalogue \n2. Move to archive \n3. Exit"
-    option = gets.chomp
   end
   puts "\n\n\n********************\n*     Goodbye!     *\n********************\n"
 end
