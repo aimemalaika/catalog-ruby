@@ -2,12 +2,17 @@ require('date')
 
 class Item
   attr_reader :id, :archived
-  attr_accessor :publish_date
+  attr_accessor :publish_date, :label
 
-  def initialize(id: Rand.random(1.1000), publish_date: Date.today.year, archived: false)
+  def initialize(publish_date: Date.today.year, archived: false, id: Random.rand(1..1000))
     @id = id
     @publish_date = publish_date
     @archived = archived
+    @label = nil
+  end
+
+  def add_label(label)
+    label.add_item(self)
   end
 
   def can_be_archived?
