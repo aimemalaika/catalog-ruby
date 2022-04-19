@@ -10,6 +10,7 @@ class Item
     @id = id
     @author = nil
     @label = nil
+    @genre = nil
   end
 
   def add_author=(author)
