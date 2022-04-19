@@ -19,7 +19,7 @@ describe Label do
   describe '#add' do
     it 'add_item func takes an item and updates label\'s items and item\'s label' do
       # ARRANGE
-      @item = Item.new
+      @item = Item.new('12/18/1998', false)
       @label = Label.new('Comedy')
       # ACT
       @label.add_item(@item)
