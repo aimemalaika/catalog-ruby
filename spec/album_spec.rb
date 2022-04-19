@@ -15,7 +15,7 @@ describe MusicAlbum do
   end
 
   it 'should have an id' do
-    expect(@album.id).to eq(1)
+    expect(@album.id).to be_instance_of(Integer)
   end
 
   it 'should have a publish date' do
