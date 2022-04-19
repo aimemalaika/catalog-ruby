@@ -8,6 +8,7 @@ class Item
     @publish_date = publish_date
     @archived = archived
     @id = id
+    @author = nil
   end
 
   def add_author=(author)
