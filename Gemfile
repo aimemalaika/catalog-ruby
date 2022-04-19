@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'rspec'
-
 # gem "rails"
+
+gem 'rubocop', '>= 1.0', '< 2.0'
