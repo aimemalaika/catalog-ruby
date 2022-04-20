@@ -20,6 +20,7 @@ describe 'Author' do
       item = Item.new('12/02/2018', false)
       author.add_item(item)
       expect(author.items).to include(item)
+      expect(item.author).to be(author)
     end
   end
 end
