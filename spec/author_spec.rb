@@ -1,7 +1,7 @@
 require_relative 'spec_helper'
 
 describe 'Author' do
-  context 'when create a new book' do
+  context 'when create a new author' do
     it 'return a new object' do
       author = Author.new('kyrillos', 'bondok')
       expect(author).to be_an_instance_of(Author)
