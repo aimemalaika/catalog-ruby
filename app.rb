@@ -39,7 +39,8 @@ class App
     @games.each_with_index do |game, index|
       puts "#{index + 1}) Last Played: #{game.last_played_at}
             Multiplayer: #{game.multiplayer}
-            publish: #{game.publish_date}"
+            publish: #{game.publish_date}
+            author: #{game.author.first_name} #{game.author.last_name}"
     end
   end
 end
