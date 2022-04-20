@@ -37,7 +37,9 @@ class App
 
   def list_all_games
     @games.each_with_index do |game, index|
-      puts "#{index + 1}) Last Played: #{game.last_played_at}, Multiplayer: #{game.multiplayer}, publish: #{game.publish_date}"
+      puts "#{index + 1}) Last Played: #{game.last_played_at}
+            Multiplayer: #{game.multiplayer}
+            publish: #{game.publish_date}"
     end
   end
 end
