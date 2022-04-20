@@ -11,7 +11,6 @@ describe 'Game' do
       game = Game.new(false, '22/2/2002', '2/2/2019')
       expect(game.multiplayer).to be false
     end
-
   end
 
   context 'when call can_be_archived? method' do
