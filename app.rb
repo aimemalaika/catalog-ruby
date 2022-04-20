@@ -20,7 +20,7 @@ class App
 
   def list_all_authors
     @authors.each_with_index do |author, index|
-      puts "#{index + 1 }) #{author.first_name} #{author.last_name}"
+      puts "#{index + 1}) #{author.first_name} #{author.last_name}"
     end
   end
 
@@ -40,5 +40,4 @@ class App
       puts "#{index + 1}) Last Played: #{game.last_played_at}, Multiplayer: #{game.multiplayer}, publish: #{game.publish_date}"
     end
   end
-
 end
