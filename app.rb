@@ -1,8 +1,11 @@
 require_relative 'classes/author'
 require_relative 'classes/game'
 require_relative 'inputs/inputs'
+require_relative 'modules/author_module'
 
 class App
+  include AuthorModule
+
   def initialize
     @books = []
     @music_albums = []
@@ -10,17 +13,9 @@ class App
     @games = []
     @genres = []
     @labels = []
-    @authors = []
     @sources = []
-    add_authors
-  end
-
-  def add_authors
-    author_names = ['Stephen King', 'Marguerite Duras', 'Saul Bellow', 'Ernest Hemingway']
-    author_names.each do |author|
-      first_name, last_name = author.split(' ')
-      @authors << Author.new(first_name, last_name)
-    end
+    @authors = []
+    add_authors(@authors)
   end
 
   def list_all_authors
