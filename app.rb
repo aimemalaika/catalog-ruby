@@ -10,7 +10,7 @@ class App
   include AuthorModule
   include AddBooks
   include AddLabels
-  
+
   def initialize
     @books = []
     @music_albums = []
@@ -50,7 +50,7 @@ class App
             author: #{game.author.first_name} #{game.author.last_name}"
     end
   end
-  
+
   def list_all_books
     @books.each_with_index do |book, index|
       puts "[#{index + 1}] Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
@@ -65,7 +65,7 @@ class App
 
   def add_book
     puts "Let's create a book!"
-    publisher, cover_state =  grap_book_data
+    publisher, cover_state = grap_book_data
 
     puts "\nChoose a label from the following list using a number"
     sleep(1)

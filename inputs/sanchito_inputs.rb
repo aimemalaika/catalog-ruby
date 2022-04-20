@@ -3,7 +3,7 @@ def grap_book_data
   publisher = gets.chomp
 
   print "\nPlease enter the state of it's cover [good or bad]: "
-  cover_state =  gets.chomp
-  
+  cover_state = gets.chomp
+
   [publisher, cover_state]
 end
