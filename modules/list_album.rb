@@ -16,13 +16,13 @@ module ManageAlbums
     data = []
     @music_albums.each do |album|
       data << {
-        'publish_date' => album.publish_date,
-        'archived' => album.archived,
-        'on_spotify' => album.on_spotify,
-        'id' => album.id
+        'publish_date' => album['publish_date'],
+        'archived' => album['archived'],
+        'on_spotify' => album['on_spotify'],
+        'genre' => album['genre'],
+        'id' => album['id']
       }
     end
     open('./data/albums.json', 'w') { |file| file.write(data.to_json) }
-    puts data.to_json
   end
 end
