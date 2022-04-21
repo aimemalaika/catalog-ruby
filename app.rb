@@ -19,8 +19,8 @@ require_relative 'store/store_labels'
 require_relative 'store/load_books'
 require_relative 'store/load_labels'
 
-BOOKS_FILE = 'store/books.json'.freeze
-LABELS_FILE = 'store/labels.json'.freeze
+BOOKS_FILE = 'data/books.json'.freeze
+LABELS_FILE = 'data/labels.json'.freeze
 
 class App
   include AuthorModule
@@ -91,14 +91,19 @@ class App
   end
 
   def list_all_books
+    puts "\n\n\nBooks:\n------------"
     @books.each_with_index do |book, index|
-      puts "[#{index + 1}] Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
+      puts "
+      [#{index + 1}]
+      Publisher: #{book.publisher},
+      Cover State: #{book.cover_state}"
     end
   end
 
   def list_all_labels
+    puts "\n\n\nLabels:\n------------"
     @labels.each_with_index do |label, index|
-      puts "[#{index + 1}] Title: #{label.title}, Color: #{label.color}, Items: #{label.items}, ID: #{label.id}"
+      puts "[#{index + 1}] Title: #{label.title}, Color: #{label.color} ID: #{label.id}"
     end
   end
 
