@@ -11,5 +11,5 @@ def save_games(games)
       }
     )
   end
-  File.write('games.json', JSON.generate(games_data))
+  File.write('./data/games.json', JSON.generate(games_data))
 end

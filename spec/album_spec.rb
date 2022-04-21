@@ -3,7 +3,7 @@ require_relative '../classes/item'
 
 describe MusicAlbum do
   before(:each) do
-    @album = MusicAlbum.new('12/02/2018', false)
+    @album = MusicAlbum.new('12/02/2018', false, false)
   end
 
   it 'should be an instance of MusicAlbum' do
@@ -31,7 +31,13 @@ describe MusicAlbum do
   end
 
   it 'should be able to be archived' do
-    @album = MusicAlbum.new('12/02/2005', false)
+    @album = MusicAlbum.new('12/02/2005', false, false)
+    @album.move_to_archive
+    expect(@album.archived).to eq(false)
+  end
+
+  it 'should be able to be archived' do
+    @album = MusicAlbum.new('12/02/2005', false, true)
     @album.move_to_archive
     expect(@album.archived).to eq(true)
   end
