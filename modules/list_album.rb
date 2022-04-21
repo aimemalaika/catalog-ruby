@@ -2,7 +2,6 @@ require_relative '../classes/albums'
 
 module ManageAlbums
   def load_albums
-    puts "\n\n\nAlbums:\n------------"
     if File.exist?('./data/albums.json') && File.read('./data/albums.json') != ''
       JSON.parse(File.read('./data/albums.json')).each do |album|
         MusicAlbum.new(album['publish_date'], album['archived'], album['on_spotify'], id: album['id'])
