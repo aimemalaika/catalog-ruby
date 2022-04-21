@@ -1,6 +1,7 @@
-CREATE TABLE musicAlbum (
+CREATE TABLE music_album (
   id INT PRIMARY KEY REFERENCES item(id),
-  on_spotify BOOLEAN NOT NULL
+  on_spotify BOOLEAN NOT NULL,
+  FOREIGN KEY (id) REFERENCES item (id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE genre (
