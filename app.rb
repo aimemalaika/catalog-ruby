@@ -65,8 +65,8 @@ class App
     @music_albums.each do |album|
       puts "
       id: #{album['id']}
-      publish_date: (#{album['publish_date']}) 
-      Archived: #{album['archived']}  
+      publish_date: (#{album['publish_date']})
+      Archived: #{album['archived']}
       On spotify: #{album['on_spotify']}"
     end
     puts "\n--------------------\n\n\n"
