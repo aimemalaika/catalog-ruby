@@ -1,8 +1,15 @@
+require 'json'
+require_relative './classes/genre'
+require_relative './modules/list_genre'
+require_relative './classes/albums'
+require_relative './modules/list_album'
 require_relative 'classes/author'
 require_relative 'classes/game'
 require_relative 'classes/book'
 require_relative 'classes/label'
 require_relative 'modules/author_module'
+require_relative 'store/game_read'
+require_relative 'store/game_store'
 require_relative 'modules/book_module'
 require_relative 'modules/label_module'
 require_relative 'inputs/inputs'
@@ -11,8 +18,7 @@ require_relative 'store/store_books'
 require_relative 'store/store_labels'
 require_relative 'store/load_books'
 require_relative 'store/load_labels'
-require 'json'
-
+    
 BOOKS_FILE = 'store/books.json'.freeze
 LABELS_FILE = 'store/labels.json'.freeze
 
@@ -20,25 +26,47 @@ class App
   include AuthorModule
   include BookModule
   include LabelModule
+  include GenreList
+  include ManageAlbums
 
   def initialize
-    @labels = grab_labels # labels must always be before books
+    @labels = grab_labels
     @books = grab_books
-    @music_albums = []
+    @music_albums = load_albums
     @movies = []
-    @games = []
-    @genres = []
+    @games = read_games
+    @genres = load_genres
     @sources = []
+    save_genres
     @authors = []
     add_authors(@authors)
     add_default_books(@books) unless @books.length.positive?
     add_default_labels(@labels) unless @labels.length.positive?
   end
 
+  def list_all_genres
+    puts "\n\n\nGenres:\n------------"
+    index = 1
+    @genres.each do |genre|
+      puts "#{index}. #{genre['name']}"
+      index += 1
+    end
+    puts "\n--------------------\n\n\n"
+  end
+
   def list_all_authors
     @authors.each_with_index do |author, index|
       puts "#{index + 1}) #{author.first_name} #{author.last_name}"
     end
+  end
+
+  def list_all_music_albums
+    puts "\n\n\nAlbums:\n------------"
+    @music_albums.each do |album|
+      puts "id: #{album['id']}) publish_date: (#{album['publish_date']}) Archived: #{album['archived']}  On spotify: #
+  {album['on_spotify']}"
+    end
+    puts "\n--------------------\n\n\n"
   end
 
   def add_game
@@ -50,14 +78,15 @@ class App
     new_game.add_author(@authors[author_chosen - 1])
     @games << new_game
     puts 'The game has been added successfully!'
+    save_games(@games)
   end
 
   def list_all_games
     @games.each_with_index do |game, index|
-      puts "#{index + 1}) Last Played: #{game.last_played_at}
-            Multiplayer: #{game.multiplayer}
-            publish: #{game.publish_date}
-            author: #{game.author.first_name} #{game.author.last_name}"
+      puts "
+        #{index + 1}) Last Played: #{game.last_played_at}
+        Multiplayer: #{game.multiplayer}
+        publish: #{game.publish_date}"
     end
   end
 
@@ -71,6 +100,27 @@ class App
     @labels.each_with_index do |label, index|
       puts "[#{index + 1}] Title: #{label.title}, Color: #{label.color}, Items: #{label.items}, ID: #{label.id}"
     end
+  end
+
+  def add_music_album
+    index = 1
+    puts 'Select genre:'
+    @genres.each do |genre|
+      puts "#{index}. #{genre['name']}"
+      index += 1
+    end
+    genre_index = gets.chomp.to_i
+    puts 'Enter publication date of the album:'
+    publish_date = gets.chomp
+    puts 'Is the album archived? (y/n)'
+    archived = gets.chomp == 'y'
+    puts 'Is the album on Spotify? (y/n)'
+    on_spotify = gets.chomp == 'y'
+    new_album = MusicAlbum.new(publish_date, archived, on_spotify)
+    @music_albums << { 'publish_date' => publish_date, 'archived' => archived, 'on_spotify' => on_spotify,
+                       'id' => new_album.id, 'genre' => @genres[genre_index - 1]['name'] }
+    save_music_albums
+    puts "\n\n\nAlbum added!\n------------\n\n\n"
   end
 
   def add_book
