@@ -13,8 +13,7 @@ class Item
     @genre = nil
   end
 
-  def add_author=(author)
-    @author = author
+  def add_author(author)
     author.add_item(self)
   end
 
