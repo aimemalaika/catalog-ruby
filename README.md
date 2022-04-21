@@ -18,6 +18,8 @@ In this project, we created a console app that will help users to keep a record 
   - [Windows](#windows)
 - [Setup](#setup)
 - [Usage](#usage)
+- [Testing](#testing)
+- [Database](#database)
 - [Collaborators](#collaborators)
 - [Show Your Support](#how-your-support)
 - [Acknowledgments](#acknowledgments)
@@ -99,11 +101,35 @@ $ ruby ./main.rb
 ```
 <hr>
 
-## Test
+## Testing
 
 ``` bash
 $ rspec ./spec
 ```
+<hr>
+
+## Database
+This repository includes files with plain SQL that can be used to recreate a database:
+
+1. Run this in your bash terminal to gain access to postgres command line
+~~~ bash
+$ psql postgres
+~~~
+
+2. Create a new database with any name ('vet-clinic' is suggested), and connect to that database.
+~~~ postgres
+# CREATE DATABASE <database_name>;
+# \c <database_name>
+~~~
+
+3. Use [schema.sql](./schema.sql) to create all tables. Copy and paste the content of this file into the postgres command line. That should create the tables in your database.
+Now verify it. The following command displays all tables in your database:
+~~~ postgres
+# \d
+~~~
+
+### And that's pretty much all. At this point, feel free to experiment by inserting data and running queries!
+<hr>
 
 ## Collaborators
 
