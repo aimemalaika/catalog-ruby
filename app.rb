@@ -1,10 +1,10 @@
 require_relative 'classes/author'
 require_relative 'classes/game'
-require './modules/book_module'
-require './modules/label_module'
-require './inputs/sanchito_inputs'
-require_relative 'inputs/inputs'
 require_relative 'modules/author_module'
+require_relative 'modules/book_module'
+require_relative 'modules/label_module'
+require_relative 'inputs/inputs'
+require_relative 'inputs/new_book_input'
 
 class App
   include AuthorModule
@@ -64,19 +64,6 @@ class App
   end
 
   def add_book
-    puts "Let's create a book!"
-    publisher, cover_state = grap_book_data
-
-    puts "\nChoose a label from the following list using a number"
-    sleep(1)
-    list_all_labels
-    print "\nYour selected label: "
-    label_chosen = gets.chomp.to_i
-    new_book = Book.new(publisher, cover_state)
-    new_book.add_label(@labels[label_chosen - 1])
-    @books << new_book
-    puts "\nBook created successfully!"
-    puts "\n\n...Returning to main menu...\n\n"
-    sleep(1)
+    new_book_input
   end
 end
