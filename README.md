@@ -2,6 +2,8 @@
 
 # Catalog of Things - Ruby Capstone
 
+In this project, we created a console app that will help users to keep a record of different types of things you won: books, music albums, movies, and games. Everything based on the UML class diagram. The data stored in JSON files but we also prepared a database with tables structure analogical to our program's classes structure.
+
 ## Preview
 ![screenshot](./screenshot.png)
 
@@ -97,6 +99,12 @@ $ ruby ./main.rb
 ```
 <hr>
 
+## Test
+
+``` bash
+$ rspec ./spec
+```
+
 ## Collaborators
 
 👤 **Aime Malaika**
@@ -109,9 +117,9 @@ $ ruby ./main.rb
 
  Platform | Badge |
  --- | --- |
- **GitHub**  | []()
- **Twitter** | []()
- **LinkedIn** | []()
+ **GitHub**  | [@bondok6](https://github.com/Bondok6)
+ **Twitter** | [@kyrillos](https://twitter.com/kyrilloshany99)
+ **LinkedIn** | [kyrillos](https://www.linkedin.com/in/kyrillos-hany/)
  <hr>
 
 👤 **Eduardo**
