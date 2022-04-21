@@ -18,7 +18,7 @@ require_relative 'store/store_books'
 require_relative 'store/store_labels'
 require_relative 'store/load_books'
 require_relative 'store/load_labels'
-    
+
 BOOKS_FILE = 'store/books.json'.freeze
 LABELS_FILE = 'store/labels.json'.freeze
 
@@ -141,5 +141,17 @@ class App
 
   def grab_books
     load_books
+  end
+
+  def list_all_movies
+    puts 'Build pending... not currently available.'
+  end
+
+  def list_all_sources
+    puts 'Build pending... not currently available.'
+  end
+
+  def add_movie
+    puts 'Build pending... not currently available.'
   end
 end
