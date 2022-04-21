@@ -52,7 +52,7 @@ class App
   def list_all_music_albums
     puts "\n\n\nAlbums:\n------------"
     @music_albums.each do |album|
-      puts "id: #{album['id']}) publish_date: (#{album['publish_date']}) Archived: #{album['archived']}  On spotify: # 
+      puts "id: #{album['id']}) publish_date: (#{album['publish_date']}) Archived: #{album['archived']}  On spotify: #
   {album['on_spotify']}"
     end
     puts "\n--------------------\n\n\n"
@@ -75,12 +75,6 @@ class App
             Multiplayer: #{game.multiplayer}
             publish: #{game.publish_date}
             author: #{game.author.first_name} #{game.author.last_name}"
-    end
-  end
-
-  def list_all_books
-    @books.each_with_index do |book, index|
-      puts "[#{index + 1}] Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
     end
   end
 
