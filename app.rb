@@ -7,6 +7,10 @@ require_relative 'modules/book_module'
 require_relative 'modules/label_module'
 require_relative 'inputs/inputs'
 require_relative 'inputs/new_book_input'
+require_relative 'store/store_books'
+require_relative 'store/store_labels'
+require_relative 'store/load_books'
+require_relative 'store/load_labels'
 require 'json'
 
 class App
@@ -15,8 +19,8 @@ class App
   include AddLabels
 
   def initialize
-    @labels = load_labels
-    @books = load_books
+    @labels = grab_labels # labels must always be before books
+    @books = grab_books
     @music_albums = []
     @movies = []
     @games = []
@@ -71,57 +75,18 @@ class App
   end
 
   def save_books
-    books = @books.each_with_index.map do |book, index|
-      { class: book.class, publisher: book.publisher, cover_state: book.cover_state,
-        label: (book.label ? book.label.id : nil),
-        index: index, id: book.id }
-    end
-    json_books = JSON.generate(books)
-    File.write('books.json', json_books)
+    store_books
   end
 
   def save_labels
-    labels = @labels.each_with_index.map do |label, _index|
-      items = []
-      @books.each do |book|
-        items << book.id if book.label == label
-      end
-
-      { class: label.class, title: label.title, color: label.color, items: items, id: label.id }
-    end
-    json_labels = JSON.generate(labels)
-    File.write('labels.json', json_labels)
+    store_labels
   end
 
-  def load_labels
-    return [] unless File.exist?('labels.json')
-
-    file = File.open('labels.json')
-    labels_read = File.read(file)
-    labels_json = JSON.parse(labels_read)
-    loaded_labels = []
-    labels_json.each do |label|
-      loaded_labels << Label.new(label['title'], label['color'], label['items'], id: label['id'])
-    end
-    file.close
-    loaded_labels
+  def grab_labels
+    load_labels
   end
 
-  def load_books
-    return [] unless File.exist?('books.json')
-
-    file = File.open('books.json')
-    books_read = File.read(file)
-    books_json = JSON.parse(books_read)
-    loaded_books = []
-
-    books_json.each do |book|
-      book_label = @labels.select { |label| label.id == book['label'] }
-      single_book = Book.new(book['publisher'], book['cover_state'], id: book['id'])
-      single_book.add_label(book_label[0]) unless book_label.empty?
-      loaded_books << single_book
-    end
-    file.close
-    loaded_books
+  def grab_books
+    load_books
   end
 end
