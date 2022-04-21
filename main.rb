@@ -53,6 +53,8 @@ def main
     elsif option >= 7 && option < 13
       menu_two(option, app)
     elsif option == 13
+      app.save_books
+      app.save_labels
       break
     else
       puts "Invalid option, please try again\n--------------------\n\n\n"

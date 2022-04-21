@@ -20,7 +20,7 @@ def new_book_input
   @books << new_book
 
   puts "\nBook created successfully!"
-  
+
   puts "\n\n...Returning to main menu...\n\n"
   sleep(1)
 end
