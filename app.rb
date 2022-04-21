@@ -2,6 +2,8 @@ require_relative 'classes/author'
 require_relative 'classes/game'
 require_relative 'inputs/inputs'
 require_relative 'modules/author_module'
+require_relative 'store/game_read'
+require_relative 'store/game_store'
 
 class App
   include AuthorModule
@@ -10,7 +12,7 @@ class App
     @books = []
     @music_albums = []
     @movies = []
-    @games = []
+    @games = read_games
     @genres = []
     @labels = []
     @sources = []
@@ -33,13 +35,15 @@ class App
     new_game.add_author(@authors[author_chosen - 1])
     @games << new_game
     puts 'The game has been added successfully!'
+    save_games(@games)
   end
 
   def list_all_games
     @games.each_with_index do |game, index|
-      puts "#{index + 1}) Last Played: #{game.last_played_at}
-            Multiplayer: #{game.multiplayer}
-            publish: #{game.publish_date}"
+      puts "
+        #{index + 1}) Last Played: #{game.last_played_at}
+        Multiplayer: #{game.multiplayer}
+        publish: #{game.publish_date}"
     end
   end
 end
