@@ -33,12 +33,12 @@ class App
     @labels = grab_labels
     @books = grab_books
     @music_albums = load_albums
-    @movies = []
     @games = read_games
     @genres = load_genres
+    @movies = []
     @sources = []
-    save_genres
     @authors = []
+    save_genres
     add_authors(@authors)
     add_default_books(@books) unless @books.length.positive?
     add_default_labels(@labels) unless @labels.length.positive?
