@@ -5,34 +5,43 @@ require_relative './classes/albums'
 require_relative './modules/list_album'
 require_relative 'classes/author'
 require_relative 'classes/game'
-require './modules/book_module'
-require './modules/label_module'
-require './inputs/sanchito_inputs'
-require_relative 'inputs/inputs'
+require_relative 'classes/book'
+require_relative 'classes/label'
 require_relative 'modules/author_module'
 require_relative 'store/game_read'
 require_relative 'store/game_store'
+require_relative 'modules/book_module'
+require_relative 'modules/label_module'
+require_relative 'inputs/inputs'
+require_relative 'inputs/new_book_input'
+require_relative 'store/store_books'
+require_relative 'store/store_labels'
+require_relative 'store/load_books'
+require_relative 'store/load_labels'
+
+BOOKS_FILE = 'store/books.json'.freeze
+LABELS_FILE = 'store/labels.json'.freeze
 
 class App
   include AuthorModule
-  include AddBooks
-  include AddLabels
+  include BookModule
+  include LabelModule
   include GenreList
   include ManageAlbums
 
   def initialize
-    @books = []
+    @labels = grab_labels
+    @books = grab_books
     @music_albums = load_albums
     @movies = []
     @games = read_games
     @genres = load_genres
-    @labels = []
     @sources = []
     save_genres
     @authors = []
     add_authors(@authors)
-    add_books(@books)
-    add_labels(@labels)
+    add_default_books(@books) unless @books.length.positive?
+    add_default_labels(@labels) unless @labels.length.positive?
   end
 
   def list_all_genres
@@ -115,19 +124,34 @@ class App
   end
 
   def add_book
-    puts "Let's create a book!"
-    publisher, cover_state = grap_book_data
+    new_book_input
+  end
 
-    puts "\nChoose a label from the following list using a number"
-    sleep(1)
-    list_all_labels
-    print "\nYour selected label: "
-    label_chosen = gets.chomp.to_i
-    new_book = Book.new(publisher, cover_state)
-    new_book.add_label(@labels[label_chosen - 1])
-    @books << new_book
-    puts "\nBook created successfully!"
-    puts "\n\n...Returning to main menu...\n\n"
-    sleep(1)
+  def save_books
+    store_books
+  end
+
+  def save_labels
+    store_labels
+  end
+
+  def grab_labels
+    load_labels
+  end
+
+  def grab_books
+    load_books
+  end
+
+  def list_all_movies
+    puts 'Build pending... not currently available.'
+  end
+
+  def list_all_sources
+    puts 'Build pending... not currently available.'
+  end
+
+  def add_movie
+    puts 'Build pending... not currently available.'
   end
 end
