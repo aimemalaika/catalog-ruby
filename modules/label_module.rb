@@ -1,7 +1,7 @@
 require './classes/label'
 
-module AddLabels
-  def add_labels(labels)
+module LabelModule
+  def add_default_labels(labels)
     temp_arr = ['Ohara red', 'Killer black', 'Whale blue', 'Hawaii green']
     temp_arr.each do |str|
       title, color = str.split

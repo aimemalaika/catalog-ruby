@@ -18,8 +18,8 @@ LABELS_FILE = 'store/labels.json'.freeze
 
 class App
   include AuthorModule
-  include AddBooks
-  include AddLabels
+  include BookModule
+  include LabelModule
 
   def initialize
     @labels = grab_labels # labels must always be before books
@@ -31,8 +31,8 @@ class App
     @sources = []
     @authors = []
     add_authors(@authors)
-    add_books(@books) unless @books.length.positive?
-    add_labels(@labels) unless @labels.length.positive?
+    add_default_books(@books) unless @books.length.positive?
+    add_default_labels(@labels) unless @labels.length.positive?
   end
 
   def list_all_authors
