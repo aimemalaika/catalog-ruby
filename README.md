@@ -2,10 +2,12 @@
 
 # Catalog of Things - Ruby Capstone
 
-In this project, we created a console app that will help users to keep a record of different types of things you won: books, music albums, movies, and games. Everything based on the UML class diagram. The data stored in JSON files but we also prepared a database with tables structure analogical to our program's classes structure.
+In this project, we created a console app that will help users to keep a record of different types of things you won: books, music albums, movies, and games. Everything based on the [UML](https://github.com/microverseinc/curriculum-ruby/blob/main/group-capstone/images/catalog_of_my_things.png) class diagram. The data stored in JSON files but we also prepared a database with tables structure analogical to our program's classes structure.
 
 ## Preview
-![screenshot](./screenshot.png)
+<!-- ![screenshot](./screenshot.png) -->
+<img src="./screenshot.png" width="500" height="475" />  <img src="https://user-images.githubusercontent.com/45231276/164518925-bad76046-0a93-4e5b-a9a1-153e31b55ca7.PNG" width="500" />
+
 
 ## Table of Contents
 
@@ -134,9 +136,12 @@ Now verify it. The following command displays all tables in your database:
 ## Collaborators
 
 👤 **Aime Malaika**
-- GitHub:   [@aimemalaika](https://github.com/aimemalaika)
-- Twitter:  [@aimemalaika](https://twitter.com/Aime_Malaika)
-- LinkedIn: [aimemalaika](https://linkedin.com/in/aimemalaika) 
+ Platform | Badge |
+ --- | --- |
+ **GitHub**  | [@aimemalaika](https://github.com/aimemalaika)
+ **Twitter** | [@aimemalaika](https://twitter.com/Aime_Malaika)
+ **LinkedIn** | [aimemalaika](https://linkedin.com/in/aimemalaika)
+
 <hr>
 
 👤 **Kyrillos**
