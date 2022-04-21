@@ -7,7 +7,7 @@ def load_labels
 
   loaded_labels = []
   labels_json.each do |label|
-    loaded_labels << Label.new(label['title'], label['color'], label['items'], id: label['id'])
+    loaded_labels << Label.new(label['title'], label['color'], id: label['id'])
   end
   file.close
   loaded_labels
