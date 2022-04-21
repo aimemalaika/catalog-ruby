@@ -11,4 +11,3 @@ def read_games
   end
   data
 end
-

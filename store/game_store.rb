@@ -5,11 +5,11 @@ def save_games(games)
   games.each do |game|
     games_data.push(
       {
-       multiplayer: game.multiplayer,
-       last_played_at: game.last_played_at, 
-       publish_date: game.publish_date
+        multiplayer: game.multiplayer,
+        last_played_at: game.last_played_at,
+        publish_date: game.publish_date
       }
-      )
+    )
   end
   File.write('games.json', JSON.generate(games_data))
 end
