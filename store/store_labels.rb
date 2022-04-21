@@ -7,5 +7,5 @@ def store_labels
     { class: label.class, title: label.title, color: label.color, items: items, id: label.id }
   end
   json_labels = JSON.generate(labels)
-  File.write('labels.json', json_labels)
+  File.write(LABELS_FILE, json_labels)
 end

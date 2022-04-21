@@ -13,6 +13,9 @@ require_relative 'store/load_books'
 require_relative 'store/load_labels'
 require 'json'
 
+BOOKS_FILE = 'store/books.json'.freeze
+LABELS_FILE = 'store/labels.json'.freeze
+
 class App
   include AuthorModule
   include AddBooks

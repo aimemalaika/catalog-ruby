@@ -5,5 +5,5 @@ def store_books
       index: index, id: book.id }
   end
   json_books = JSON.generate(books)
-  File.write('books.json', json_books)
+  File.write(BOOKS_FILE, json_books)
 end

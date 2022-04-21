@@ -1,7 +1,7 @@
 def load_labels
-  return [] unless File.exist?('labels.json')
+  return [] unless File.exist?(LABELS_FILE)
 
-  file = File.open('labels.json')
+  file = File.open(LABELS_FILE)
   labels_read = File.read(file)
   labels_json = JSON.parse(labels_read)
 

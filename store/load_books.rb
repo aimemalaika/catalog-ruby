@@ -1,7 +1,7 @@
 def load_books
-  return [] unless File.exist?('books.json')
+  return [] unless File.exist?(BOOKS_FILE)
 
-  file = File.open('books.json')
+  file = File.open(BOOKS_FILE)
   books_read = File.read(file)
   books_json = JSON.parse(books_read)
 
